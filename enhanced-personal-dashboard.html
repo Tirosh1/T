@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanudha's Coder Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0078d4;
+            --secondary-color: #2b2b2b;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('Windows 11 Wallpaper In 2021  612.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #ffffff;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(32, 32, 32, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(32, 32, 32, 0.95);
+        }
+
+        .glass-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            padding: 1.5rem;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-icon i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .github-stats {
+            background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        #time {
+            font-size: 3.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        #date {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-code me-2"></i>
+                Shanudha's Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://gmail.com">
+                            <i class="fas fa-envelope me-1"></i> Gmail
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://outlook.com">
+                            <i class="fas fa-paper-plane me-1"></i> Outlook
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com">
+                            <i class="fab fa-github me-1"></i> GitHub
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://youtube.com">
+                            <i class="fab fa-youtube me-1"></i> YouTube
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="https://github.com/login" class="btn btn-primary">
+                        <i class="fab fa-github me-1"></i> Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5 pt-5">
+        <!-- Search Section -->
+        <div class="glass-container p-4 mb-5 animate__animated animate__fadeInDown">
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control bg-transparent text-light" placeholder="Search...">
+                <select id="ai-model" class="form-select bg-transparent text-light" style="max-width: 150px;">
+                    <option value="google">Google</option>
+                    <option value="claude">Claude AI</option>
+                    <option value="chatgpt">ChatGPT</option>
+                    <option value="blackbox">Blackbox AI</option>
+                </select>
+                <button id="search-button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="mic-button" class="btn btn-outline-light">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- GitHub Profile Section -->
+        <div class="glass-container p-4 mb-5">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="/api/placeholder/150/150" alt="GitHub Profile" class="rounded-circle mb-3">
+                    <h3>Shanudha Tirosh</h3>
+                    <p>Full Stack Developer</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://github.com/yourusername" class="btn btn-outline-light">
+                            <i class="fab fa-github"></i> Profile
+                        </a>
+                        <a href="mailto:your@email.com" class="btn btn-outline-light">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="mb-3">Skills</h4>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">Git</span>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3">
+                            <div class="github-stats text-center">
+                                <i class="fas fa-code-branch mb-2"></i>
+                                <h4>50+</h4>
+                                <p class="mb-0">Repositories</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="github-stats text-center">
+                                <i class="fas fa-star mb-2"></i>
+                                <h4>100+</h4>
+                                <p class="mb-0">Stars</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="github-stats text-center">
+                                <i class="fas fa-code-commit mb-2"></i>
+                                <h4>500+</h4>
+                                <p class="mb-0">Commits</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="github-stats text-center">
+                                <i class="fas fa-users mb-2"></i>
+                                <h4>20+</h4>
+                                <p class="mb-0">Followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apps Grid -->
+        <div class="glass-container p-4 mb-5">
+            <ul class="nav nav-pills mb-4 justify-content-center" id="appTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="pill" href="#all">All Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#dev">Development</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#ai">AI Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#social">Social</a>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="apps-container">
+                <!-- Apps will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="glass-container p-4 mb-5">
+            <h4 class="mb-3">Quick Links</h4>
+            <div id="links-container" class="d-flex flex-wrap gap-3">
+                <!-- Links will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Time Widget -->
+        <div class="glass-container p-4 text-center">
+            <div id="time"></div>
+            <div id="date"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4 glass-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="code-animation" class="mb-3">
+                        <!-- Code animation will be inserted here -->
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2024 Shanudha's Coder Home. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
